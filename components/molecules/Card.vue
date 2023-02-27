@@ -4,39 +4,41 @@
     @mouseover="mouseOver"
     @mouseleave="mouseLeave"
   >
-    <a href="#">
+    <nuxt-link :to="`/detail?imdbID=${movieDetail.imdbID}`">
       <div class="flex flex-row-reverse">
-        <span class="rate pr-2 pl-2">7.0</span>
+        <span class="rate pr-2 pl-2">{{ movieDetail.imdbRating }}</span>
       </div>
       <div v-show="upHere" class="hover-abs">
-        <div class="hover grid grid-cols-1 content-center">
+        <div class="hover grid grid-cols-1 content-center w-full">
           <h3 class="mb-4">
             <img
               src="~/assets/images/Star.svg"
               width="24"
               class="mt-2 mr-1"
-            /><span>7.3</span>
+            /><span>{{ movieDetail.imdbRating }}</span>
           </h3>
-          <h4 class="mb-4 mt-2">Action</h4>
+          <h4 class="mb-4 mt-2">{{ movieDetail.Genre }}</h4>
           <button class="text-white py-0 px-2 rounded-full mt-4">view</button>
         </div>
       </div>
       <img
-        class=""
-        src="https://m.media-amazon.com/images/M/MV5BZWI3ZThmYzUtNDJhOC00ZWY4LThiNmMtZDgxNjE3Yzk4NDU1XkEyXkFqcGdeQXVyNTk5Nzg1NjQ@._V1_SX300.jpg"
-        alt=""
+        class="image-card"
+        :src="`${movieDetail.Poster}`"
+        :alt="`${movieDetail.Title}`"
       />
-    </a>
+    </nuxt-link>
 
     <div class="pt-2 pb-2">
-      <a href="#">
+      <nuxt-link :to="`/detail?imdbID=${movieDetail.imdbID}`">
         <h5
           class="mb-1 text-1xl font-bold tracking-tight text-gray-900 dark:text-white"
         >
-          Noteworthy technology acquisitions 2021
+          {{ movieDetail.Title }}
         </h5>
-      </a>
-      <p class="mb-1 font-normal text-gray-700 dark:text-gray-400">2020</p>
+        <p class="mb-1 font-normal text-gray-700 dark:text-gray-400">
+          {{ movieDetail.Year }}
+        </p>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -44,10 +46,17 @@
 <script>
 export default {
   name: "Card",
+  props: {
+    movie: {
+      type: Object,
+      require: true,
+    },
+  },
 
   data() {
     return {
       upHere: false,
+      movieDetail: this.movie,
     };
   },
   methods: {

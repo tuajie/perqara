@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-carousel p-4">
+  <div class="bg-carousel p-4 relative-container">
     <div
       class="mb-4 container mx-auto pt-2 flex justify-between pt-8 pb-4 opacity-30"
     >

@@ -1,19 +1,13 @@
 <template>
   <div>
-    <Header />
-    <Carousel />
-    <List />
-    <Footer />
+    <Homepage />
   </div>
 </template>
 
 <script>
-import Header from "../components/organisms/Header.vue";
-import Carousel from "../components/organisms/Carousel.vue";
-import List from "../components/organisms/List.vue";
-import Footer from "../components/organisms/Footer.vue";
+import Homepage from "./homepage";
 export default {
-  components: { Header, Carousel, List, Footer },
+  components: { Homepage },
   name: "Mainpage",
 };
 </script>
